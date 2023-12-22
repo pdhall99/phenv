@@ -1,6 +1,6 @@
 # phenv
 
-Notes on my `virtualenv`/`jupyterlab` setup for data science development in Python.
+Notes on a `virtualenv`/`jupyterlab` setup for data science development in Python.
 
 ## Instructions
 
