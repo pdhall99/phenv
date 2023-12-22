@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phenv"
+version="0.0.1"
+description = "Environment tools"
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+authors = [
+    {name = "PD Hall", email = "20580126+pdhall99@users.noreply.github.com"},
+]
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "typer"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "ruff>=0.1.9"
+]
+
+[project.urls]
+Homepage = "https://github.com/pdhall99/phenv"
+
+[project.scripts]
+phenv = "phenv:app"
+
+[tool.ruff]
+line-length = 88
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["C90", "D", "E", "F", "I", "W"]
+ignore = ["E203"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
