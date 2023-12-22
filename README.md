@@ -11,7 +11,7 @@ Notes on a `virtualenv`/`jupyterlab` setup for data science development in Pytho
 1. Add a pip config file to your home directory, `pip.conf` to avoid accidentally installing any other packages in your base Python environments:
 ```ini
 [global]
-require-virtual-env = true
+require-virtualenv = true
 ```
 
 ### Make a single "system" Jupyter environment
