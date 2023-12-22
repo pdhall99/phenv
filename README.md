@@ -49,7 +49,7 @@ python3.x -m phenv make /path/to/environment
 ```
 which will make the environment, install `ipykernel` and make the kernel available in the system JupyterLab, but not any other instance on your machine.
 
-## Start JupyterLab
+### Start JupyterLab
 Start JupyterLab by running
 ```bash
 source ~/envs/jupyter_env/bin/activate
