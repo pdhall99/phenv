@@ -14,11 +14,10 @@ app = typer.Typer()
 @app.command()
 def make(dest: str) -> None:
     """Make a virtual environment."""
-    venv = str(Path(dest).resolve())
-    venv_name = Path(dest).resolve().name
-    venv_python = str((Path(dest) / "bin" / "python").resolve())
+    venv_name = Path(dest).absolute().name
+    venv_python = str(Path(dest) / "bin" / "python")
     # Create
-    subprocess.run([sys.executable, "-m", "virtualenv", venv])
+    subprocess.run([sys.executable, "-m", "virtualenv", dest])
     # Upgrade
     subprocess.run(
         [
