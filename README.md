@@ -15,13 +15,17 @@ require-virtualenv = true
 ```
 
 ### Make a single "system" Jupyter environment
-1. Make the system Jupyter environment by running `python3.11 -m virtualenv ~/envs/jupyter_env`
-2. Install JupyterLab and any extensions by running `python -m pip install jupyterlab`
-3. Add a Jupyter config file to stop the native kernel being shown in JupyterLab by running `jupyter server --generate-config` and manually editing the file (at `$JUPYTER_ENV/etc/jupyter`) to set
+1. Make the system Jupyter environment by running `python3.11 -m virtualenv /path/to/jupyter_env`
+2. 7. Declare an environment variable `JUPYTER_ENV`, the path to `jupyter_env`, in your `.bash_profile`:
+```bash
+export JUPYTER_ENV=/path/to/jupyter_env
+```
+3. Install JupyterLab and any extensions by running `python -m pip install jupyterlab`
+4. Add a Jupyter config file to stop the native kernel being shown in JupyterLab by activating the `jupyter_env`, running `jupyter server --generate-config`, and manually editing the file (at `$JUPYTER_ENV/etc/jupyter`) to set
 ```python
 c.KernelSpecManager.ensure_native_kernel = False
 ```
-4. Manually edit the `activate` script at `~/envs/jupyter_env/bin/activate` to set and unset a `JUPYTER_CONFIG_DIR` environment variable on activation and deactivation, respectively, that points to the config file:
+5. Manually edit the `activate` script at `$JUPYTER_ENV/bin/activate` to set and unset a `JUPYTER_CONFIG_DIR` environment variable on activation and deactivation, respectively, that points to the config file:
 ```bash
 ...
 # Deactivate block
@@ -30,16 +34,12 @@ unset JUPYTER_CONFIG_DIR
 # End of file
 export JUPYTER_CONFIG_DIR=$VIRTUAL_ENV/etc/jupyter
 ```
-5. Uninstall the default kernel by running `jupyter kernelspec remove python3`
-6. Add a pip config file, `pip.conf` in `jupyter_env` to stop accidental pip installation into the Jupyter environment itself:
+6. Uninstall the default kernel by running `jupyter kernelspec remove python3`
+7. Add a pip config file, `pip.conf` in `jupyter_env` to stop accidental pip installation into the Jupyter environment itself:
 ```ini
 [global]
 no-cache-dir = true
 no-index = true
-```
-7. Declare an environment variable `JUPYTER_ENV`, the path to `jupyter_env`, in your `.bash_profile`:
-```bash
-export JUPYTER_ENV=/path/to/jupyter_env
 ```
 
 ### Make a virtual environment
@@ -52,7 +52,7 @@ which will make the environment, install `ipykernel` and make the kernel availab
 ### Start JupyterLab
 Start JupyterLab by running
 ```bash
-source ~/envs/jupyter_env/bin/activate
+source $JUPTER_ENV/bin/activate
 python -m jupyter lab &
 ```
 
