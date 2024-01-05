@@ -16,7 +16,7 @@ require-virtualenv = true
 
 ### Make a single "system" Jupyter environment
 1. Make the system Jupyter environment by running `python3.11 -m virtualenv /path/to/jupyter_env`
-2. 7. Declare an environment variable `JUPYTER_ENV`, the path to `jupyter_env`, in your `.bash_profile`:
+2. Declare an environment variable `JUPYTER_ENV`, the path to `jupyter_env`, in your `.bash_profile`:
 ```bash
 export JUPYTER_ENV=/path/to/jupyter_env
 ```
